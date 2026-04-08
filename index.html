@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/imranhashim/Downloads/multipolitan-llm-strategy.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Visibility Strategy for Multipolitan - A 60-day Roadmap</title>
+<link href="./LLM Visibility Strategy for Multipolitan - A 60-day Roadmap_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --ink: #290A00;
+    --paper: #f5f0e8;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --rust: #b84c30;
+    --slate: #7A1F00;
+    --muted: #6b7280;
+    --border: #d4c9b0;
+    --week-bg: #faf7f2;
+    --tag-bg: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 120px;
+    width: 180px; height: 180px;
+    border: 1px solid var(--gold-light);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Figtree', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 760px;
+    margin-bottom: 20px;
+  }
+  header h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .meta-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  /* ── SYNTHESIS NOTE ── */
+  .synthesis-bar {
+    background: var(--gold);
+    padding: 14px 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .synthesis-bar span { font-weight: 500; }
+  .llm-tag {
+    background: var(--ink);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+
+  /* ── LAYOUT ── */
+  main { max-width: 960px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  section { margin-bottom: 60px; }
+
+  h2 {
+    font-family: 'Figtree', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2 .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    background: var(--ink);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ── INSIGHT BOXES ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .insight-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 24px 20px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .insight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+  }
+  .insight-value {
+    font-family: 'Figtree', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .insight-label {
+    font-size: 12px;
+    color: var(--gold-light);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  .insight-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: rgba(245,240,232,0.4);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── PRIORITY TABLE ── */
+  .priority-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .priority-matrix th {
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .priority-matrix td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .priority-matrix tr:nth-child(even) td { background: rgba(201,168,76,0.04); }
+  .priority-matrix tr:hover td { background: rgba(201,168,76,0.08); }
+  .badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge-critical { background: #FF4B0A; color: #fecaca; }
+  .badge-high { background: #B83100; color: #fde68a; }
+  .badge-medium { background: #3D1000; color: #bfdbfe; }
+
+  /* ── WEEK CARDS ── */
+  .week-grid { display: flex; flex-direction: column; gap: 24px; }
+
+  .week-card {
+    background: var(--week-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .week-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+  .week-header {
+    display: flex;
+    align-items: stretch;
+    cursor: pointer;
+    user-select: none;
+  }
+  .week-num {
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'Figtree', serif;
+    font-size: 28px;
+    font-weight: 900;
+    width: 80px;
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 12px;
+    line-height: 1;
+  }
+  .week-num small {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .week-info {
+    flex: 1;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .week-theme {
+    font-family: 'Figtree', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .week-goal {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+  .week-toggle {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: var(--gold);
+    font-size: 20px;
+    transition: transform 0.3s;
+  }
+  .week-card.open .week-toggle { transform: rotate(180deg); }
+
+  .week-body {
+    display: none;
+    padding: 0 24px 24px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .week-card.open .week-body { display: block; }
+
+  .action-list { list-style: none; margin-top: 16px; }
+  .action-list li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .action-list li:last-child { border-bottom: none; }
+  .action-list li::before {
+    content: '→';
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .deliverable-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .deliverable-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 14px 16px;
+  }
+  .deliverable-box h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .deliverable-box p { font-size: 13px; color: var(--slate); line-height: 1.5; }
+
+  /* ── KEYWORD CLUSTERS ── */
+  .cluster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .cluster-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .cluster-head {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 18px;
+    font-family: 'Figtree', serif;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cluster-icon { font-size: 18px; }
+  .cluster-body { padding: 14px 18px; background: white; }
+  .cluster-body ul { list-style: none; }
+  .cluster-body ul li {
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    color: var(--slate);
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border);
+    line-height: 1.4;
+  }
+  .cluster-body ul li:last-child { border-bottom: none; }
+
+  /* ── TRACKING TABLE ── */
+  .tracking-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .tracking-table th {
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .tracking-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .tracking-table tr:nth-child(even) td { background: rgba(201,168,76,0.04); }
+  .target-val {
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  .checklist li input[type=checkbox] {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    accent-color: var(--gold);
+    cursor: pointer;
+  }
+  .checklist li label { cursor: pointer; line-height: 1.5; }
+  .checklist li.done label { text-decoration: line-through; color: var(--muted); }
+
+  /* ── PLATFORM TABLE ── */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .platform-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .platform-head {
+    background: var(--slate);
+    color: white;
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .platform-body {
+    padding: 14px 16px;
+    font-size: 13px;
+    background: white;
+    line-height: 1.5;
+    color: var(--slate);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: var(--muted);
+    padding: 32px 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+  }
+  footer span { color: var(--gold); }
+
+  /* ── TIMELINE BAR ── */
+  .timeline {
+    display: flex;
+    height: 56px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+  .tl-phase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    flex-direction: column;
+    padding: 4px;
+    line-height: 1.3;
+  }
+  .tl-1 { background: #FE4400; flex: 2; }
+  .tl-2 { background: #CC3600; flex: 3; }
+  .tl-3 { background: #8F2600; flex: 2; }
+  .tl-4 { background: #521600; flex: 1; }
+  .tl-phase strong { font-size: 13px; color: var(--gold); }
+
+  @media (max-width: 600px) {
+    header { padding: 40px 24px 32px; }
+    main { padding: 32px 16px 60px; }
+    .deliverable-row { grid-template-columns: 1fr; }
+    .synthesis-bar { padding: 12px 24px; }
+    .week-num { width: 60px; min-width: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">60-day roadmap | April 2026</div>
+  <h1>LLM Visibility<br>Strategy for <em>Multipolitan.com</em></h1>
+  <p style="color:#a09070;max-width:620px;font-size:15px;margin-top:8px;">On-page action plan to make Multipolitan the go-to source in AI-generated answers for global mobility.</p>
+  <!--<div class="header-meta">
+    <div class="meta-pill">8 WEEKS · ON-PAGE ONLY</div>
+    <div class="meta-pill">TRACKABLE KPIS</div>
+    <div class="meta-pill">HIGH-INTENT KEYWORDS</div>
+    <div class="meta-pill">LLM CITATION OPTIMISED</div>
+  </div>-->
+</header>
+
+<main>
+
+<!-- ── STRATEGIC FOUNDATION ── -->
+<section>
+  <h2><span class="num">01</span> Why This Matters: The LLM Opportunity</h2>
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-value">44.2%</div>
+      <div class="insight-label">of all LLM citations come from the first 30% of a page — every intro paragraph is critical</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-value">15.9%</div>
+      <div class="insight-label">conversion rate from ChatGPT traffic vs. 1.76% from Google organic — a 9× advantage</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-value">3.2×</div>
+      <div class="insight-label">more citations for fresh content vs. older material. ChatGPT favours pages updated within 30 days</div>
+    </div>    
+  </div>
+  <p style="color:var(--muted);font-size:13px;line-height:1.7;">
+    <strong style="color:var(--ink);">Core insight:</strong> AI search operates on Retrieval-Augmented Generation (RAG). LLMs cite sources based on <em>confidence, clarity, and recency</em>, not traditional ranking signals. The competitive advantage is for brands that have optimised for citation. Multipolitan's category (global mobility, citizenship, tax optimisation) sees disproportionately high AI query rates vs. other sectors.
+  </p>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section>
+  <h2><span class="num">02</span> 60-Day Phase Overview</h2>
+  <div class="timeline">
+    <div class="tl-phase tl-1"><strong>Wk 1–2</strong><span>Audit &amp; Foundation</span></div>
+    <div class="tl-phase tl-2"><strong>Wk 3–5</strong><span>Content Architecture</span></div>
+    <div class="tl-phase tl-3"><strong>Wk 6–7</strong><span>Authority &amp; Freshness</span></div>
+    <div class="tl-phase tl-4"><strong>Wk 8</strong><span>Measure</span></div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);">Perplexity does real-time retrieval hence structural changes can appear in citations within <strong style="color:var(--ink);">days</strong> of publishing. ChatGPT (Bing-indexed) follows within 2–4 weeks. Gemini ties to traditional SEO signals.</p>
+</section>
+
+<!-- ── PRIORITY ACTIONS ── -->
+<section>
+  <h2><span class="num">03</span> Master Priority Matrix</h2>
+  <p style="margin-bottom:16px;font-size:14px;color:var(--muted);">Every action ranked by impact-to-effort ratio. Execute Critical actions first as they unlock all downstream gains.</p>
+  <table class="priority-matrix">
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Action</th>
+        <th>Rationale</th>
+        <th>Tracking Metric</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Add "Answer-First" blocks (40–60 words) at the top of every key page, directly answering the target query</td>
+        <td>44.2% of LLM citations are from the first 30% of a page (Sonnet 4.5). This is the single highest-leverage action.</td>
+        <td>% of pages with Bottom Line Up Front (BLUF) format</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Implement FAQPage, HowTo, Article, and Organization schema markup in JSON-LD on all commercial pages</td>
+        <td>Without schema, LLMs cannot confidently extract structured information. Agreed upon by all 5 LLMs.</td>
+        <td>Schema validation score (target 100%)</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Verify GPTBot, PerplexityBot, OAI-SearchBot, and Googlebot-AI access in robots.txt</td>
+        <td>If bots can't crawl, nothing else matters. Fast win: 15-minute check.</td>
+        <td>Bot accessibility confirmed</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-critical">Critical</span></td>
+        <td>Restructure H1/H2/H3 headings as natural-language questions ("What are the costs of Malta CBI in 2026?")</td>
+        <td>LLMs match headings to user queries. Question-based headers dramatically increase extraction probability.</td>
+        <td>% of target pages with question H-tags</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add llms.txt file to root directory (emerging standard, adopted by Perplexity)</td>
+        <td>Signals LLM-readiness and provides structured site context to AI crawlers.</td>
+        <td>File live &amp; validated</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add TL;DR summaries (40–50 words) and "Key Takeaways" boxes to all pillar pages</td>
+        <td>Creates extractable, quotable chunks. LLMs prefer scannable structures.</td>
+        <td>% of pillar pages with summaries</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Create 3–5 dedicated comparison pages (Multipolitan vs Golden Visa, CBI programs ranked, etc.) with tables</td>
+        <td>LLMs frequently answer "What's better: X or Y?" — comparison content is high-citation territory.</td>
+        <td># of comparison pages live</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Add 5–10 FAQ pairs per page using H3 + 2–3 sentence direct answer format</td>
+        <td>FAQs map directly to how users phrase LLM queries. Agreed by ChatGPT, Gemini, Qwen.</td>
+        <td># FAQ pairs added</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-high">High</span></td>
+        <td>Establish consistent entity description: "Multipolitan = global mobility membership platform" on every page</td>
+        <td>LLMs build entity graphs. Consistent association with "global mobility" locks in brand positioning.</td>
+        <td>Entity consistency score</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Display prominent "Last Updated" timestamps and update top 10 pages every 2 weeks</td>
+        <td>AI assistants cite content 25.7% fresher than organic results. Freshness is a proxy for trustworthiness.</td>
+        <td>Avg. days since update (&lt;14 days)</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Add original research hooks ("We analysed 50+ programs…") and first-party data points</td>
+        <td>LLMs favour primary sources. Data hooks increase citation probability significantly.</td>
+        <td># of original data points per article</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td>Create hub-and-spoke internal linking clusters (Global Mobility hub → country pages)</td>
+        <td>Helps LLMs understand topical authority and site hierarchy. Reduces crawl depth to ≤3 clicks.</td>
+        <td>Avg. internal links per page (target 4–6)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── KEYWORD CLUSTERS ── -->
+<section>
+  <h2><span class="num">04</span> High-Intent Keyword Clusters</h2>
+  <p style="margin-bottom:20px;font-size:14px;color:var(--muted);">Focus exclusively on decision-stage and comparison queries users at the bottom of the funnel where Multipolitan can convert. Phrased as LLM queries, not traditional search strings.</p>
+  <div class="cluster-grid">
+    <div class="cluster-card">
+      <div class="cluster-head"><span class="cluster-icon">🏛️</span> Citizenship by Investment</div>
+      <div class="cluster-body">
+        <ul>
+          <li>"Best citizenship by investment 2026"</li>
+          <li>"Cheapest EU citizenship by investment"</li>
+          <li>"Malta vs Caribbean CBI comparison"</li>
+          <li>"How to apply for Malta citizenship 2026"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-head"><span class="cluster-icon">🏠</span> Residency &amp; Golden Visa</div>
+      <div class="cluster-body">
+        <ul>
+          <li>"Portugal vs Spain golden visa 2026"</li>
+          <li>"Cheapest EU residency by investment"</li>
+          <li>"Greece golden visa vs Spain 2026"</li>
+          <li>"Digital nomad visa vs golden visa"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-head"><span class="cluster-icon">💰</span> Tax &amp; Wealth Planning</div>
+      <div class="cluster-body">
+        <ul>
+          <li>"Tax-friendly countries for remote workers"</li>
+          <li>"Zero-tax countries for digital nomads ranked"</li>
+          <li>"UAE residency tax benefits for HNWIs"</li>
+          <li>"Safest countries for HNWI asset protection"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-head"><span class="cluster-icon">💻</span> Digital Nomad Lifestyle</div>
+      <div class="cluster-body">
+        <ul>
+          <li>"Best digital nomad visa 2026"</li>
+          <li>"How to live in multiple countries legally"</li>
+          <li>"Best digital nomad residency programs"</li>
+          <li>"Alternatives to residency by investment"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-head"><span class="cluster-icon">⚖️</span> Bottom-Funnel Comparison</div>
+      <div class="cluster-body">
+        <ul>
+          <li>"Multipolitan vs golden visa"</li>
+          <li>"Is Multipolitan worth it?"</li>
+          <li>"Multipolitan review global mobility"</li>
+          <li>"Global citizenship membership cost"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WEEK BY WEEK ── -->
+<section>
+  <h2><span class="num">05</span> Week-by-Week Execution Plan</h2>
+  <p style="margin-bottom:20px;font-size:14px;color:var(--muted);">Click each week to expand. Sequenced for maximum early impact. Perplexity wins first, ChatGPT follows, Gemini compounds.</p>
+
+  <div class="week-grid">
+
+    <!-- W1 -->
+    <div class="week-card open">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">1<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">Audit, Baseline &amp; Bot Access</div>
+          <div class="week-goal">GOAL: Establish ground truth before any optimisation</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Verify GPTBot, PerplexityBot, OAI-SearchBot are allowed in robots.txt</li>
+          <li>Manually test 15–20 target prompts across ChatGPT, Perplexity, Gemini, and Claude. Record: mentioned (Y/N), position, sentiment, source cited</li>
+          <li>Audit top 20 pages for LLMO-readiness: do they have direct-answer openers, question H-tags, and scannable structure?</li>
+          <li>Set up GA4 custom segment for referral traffic from openai.com, perplexity.ai, gemini.google.com</li>
+          <li>Identify top 50 high-intent prompts mapped to existing or needed pages</li>
+          <li>Add llms.txt to root directory</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>Baseline report: current citation rate, share of voice per platform, pages currently cited vs. not cited</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Week 0 snapshot across all KPIs. This is your proof of results at Day 60.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W2 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">2<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">Keyword Mapping &amp; Entity Architecture</div>
+          <div class="week-goal">GOAL: Build the semantic map that guides all content work</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Map 5 keyword clusters (see Section 04) to specific existing pages: 1 cluster per page, no overlap</li>
+          <li>Define Multipolitan's entity description: "Multipolitan is a global mobility membership platform providing residency access, lifestyle benefits, and borderless living services." Use this verbatim on homepage, About page, meta descriptions, and first paragraph of all key pages</li>
+          <li>Identify content gaps: which queries cite competitors but not Multipolitan?</li>
+          <li>Build entity-relationship map: Brand → Programs → Countries → Benefits → Costs</li>
+          <li>Prioritise 10 pages for immediate on-page overhaul (Week 3)</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>Entity map + page-to-cluster assignment doc. Competitor citation analysis.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Top 50 prioritised prompts locked. Gap analysis: which topics yield fastest wins.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W3 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">3<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">On-Page Architecture (Batch 1: Top 10 Pages)</div>
+          <div class="week-goal">GOAL: Make pages digestible for AI crawlers</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li><strong>Answer-First:</strong> Add a 40–60 word direct answer block at the very top of each page, before any preamble</li>
+          <li><strong>Question H-tags:</strong> Rewrite H2/H3 as natural-language questions ("What are the costs of the Malta CBI program in 2026?")</li>
+          <li><strong>Schema:</strong> Implement FAQPage + Article schema on all 10 pages; Organization schema on homepage</li>
+          <li><strong>Quick Facts box:</strong> Add bullet-point summary (Cost / Eligibility / Countries / Processing Time) early in each article</li>
+          <li><strong>Paragraph chunking:</strong> Break any paragraph &gt;3 sentences into 2–3 sentence chunks for AI parsing</li>
+          <li>Add 5–10 FAQ pairs per page (H3 question + 2–3 sentence direct answer)</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>10 pages live with new architecture. Schema validated via Google Rich Results Test.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>% of target pages with BLUF format. Schema pass rate (target 95%+).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W4 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">4<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">Comparison Content Sprint</div>
+          <div class="week-goal">GOAL: Own the decision-stage queries LLMs answer most often</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Create 3 comparison pages: (1) "Multipolitan vs Golden Visa", (2) "CBI Programs: Caribbean vs Europe Ranked", (3) "Digital Nomad Visa vs Residency by Investment"</li>
+          <li>Use side-by-side tables: Investment / Timeline / Visa-Free Travel / Tax Benefits / Eligibility</li>
+          <li>Add "Who should choose X" and "Who should choose Y" verdict sections as LLMs extract these verbatim</li>
+          <li>Publish 2 new "answer-first" articles targeting uncovered high-intent prompts from the gap analysis</li>
+          <li>Internal linking: link all new comparison pages back to a central "Global Mobility Guide" pillar page</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>3 comparison pages + 2 new articles live. Internal linking map updated.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Re-run 15 target prompts. Expected: first mentions in Perplexity for comparison queries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W5 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">5<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">On-Page Architecture (Batch 2: Next 15 Pages)</div>
+          <div class="week-goal">GOAL: Scale the Week 3 template across remaining priority pages</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Apply Week 3 optimisations to next 15 pages (service pages, country-specific pages, program guides)</li>
+          <li>Rewrite meta titles as intent-rich questions: "Malta CBI 2026: Costs, Timeline &amp; How to Apply"</li>
+          <li>Ensure first 2 sentences of every page answer: What is it? Who is it for? Why does it matter?</li>
+          <li>Optimise image alt text with entity-rich descriptions (not keyword stuffing)</li>
+          <li>Add "In summary" / "Key Takeaways" section at bottom of each article</li>
+          <li>Add Author schema with credentials to establish E-E-A-T</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>25–30 pages total optimised. Meta title audit complete. Author schema live.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Schema coverage (target 100%). Total optimised pages count.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W6 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">6<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">Freshness &amp; Original Data</div>
+          <div class="week-goal">GOAL: Signal recency and primary-source authority to LLMs</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Update all pillar pages with 2026 data: new program costs, policy changes, visa-free travel numbers</li>
+          <li>Add original research hooks: "We analysed 50+ citizenship programs…" / "According to Multipolitan's 2026 Global Mobility Index…"</li>
+          <li>Display prominent "Last Updated: [date]" timestamps on all pages, make freshness visible</li>
+          <li>Set up weekly content audit protocol: top 10 pages refreshed every 2 weeks</li>
+          <li>Newsjack any recent visa policy changes (Portugal, Greece, UAE) as rapid-response articles within 48 hours of news</li>
+          <li>Add Review/Testimonial schema for case studies</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>All pillar pages updated. Freshness protocol documented. 1–2 newsjack articles published.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Content freshness score (target: avg. &lt;30 days since update). # original data points added.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W7 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">7<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">Internal Linking &amp; Topical Authority</div>
+          <div class="week-goal">GOAL: Help LLMs understand your site hierarchy and topic ownership</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Audit internal links: ensure all optimised pages link to their cluster pillar page</li>
+          <li>Use entity-name anchor text (not just keywords): "global mobility membership" / "citizenship by investment programs"</li>
+          <li>Update "Resources" page linking to all pillar content</li>
+          <li>Ensure no optimised page is orphaned or behind login/paywall</li>
+          <li>Verify crawl depth: all key pages reachable within 3 clicks from homepage</li>
+          <li>Add "sameAs" schema links to verified social profiles and authoritative citations</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>Internal linking audit report with all fixes live. Knowledge Hub page published.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Avg. internal links per page (target 4–6). Crawl depth ≤3 clicks for all key pages.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- W8 -->
+    <div class="week-card">
+      <div class="week-header" onclick="toggle(this)">
+        <div class="week-num">8<small>week</small></div>
+        <div class="week-info">
+          <div class="week-theme">Measure, Report &amp; Iterate</div>
+          <div class="week-goal">GOAL: Prove ROI and set the roadmap for next 60 days</div>
+        </div>
+        <div class="week-toggle">▾</div>
+      </div>
+      <div class="week-body">
+        <ul class="action-list">
+          <li>Re-run the full Week 1 prompt test (same 15–20 prompts, same platforms). Compare results.</li>
+          <li>Pull GA4: referral traffic from AI domains, direct branded searches, CTR on optimised pages</li>
+          <li>Calculate AI Share of Voice: brand mentions ÷ total queries tested</li>
+          <li>Document wins: which pages are now cited, which keywords broke through first</li>
+          <li>Identify the next 10 prompt gaps to target in the following sprint</li>
+          <li>Compile 60-Day LLM Visibility Report with before/after metrics and ROI estimate</li>
+        </ul>
+        <div class="deliverable-row">
+          <div class="deliverable-box">
+            <h4>Deliverable</h4>
+            <p>Full 60-Day report. Q2 LLMO backlog prioritised. Freshness calendar for ongoing maintenance.</p>
+          </div>
+          <div class="deliverable-box">
+            <h4>Tracking Output</h4>
+            <p>Final Share of Voice %, Citation Rate %, Branded Search Volume change, AI referral traffic.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TRACKING ── -->
+<section>
+  <h2><span class="num">06</span> Tracking Framework &amp; 60-Day KPI Targets</h2>
+  <table class="tracking-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Tool / Method</th>
+        <th>Week 0 Baseline</th>
+        <th>Week 4 Target</th>
+        <th>Week 8 Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>AI Share of Voice</strong><br><span style="font-size:12px;color:var(--muted)">Brand mentions in category queries</span></td>
+        <td>Manual prompt testing · Profound / Otterly.AI</td>
+        <td>Establish Week 1</td>
+        <td class="target-val">15%</td>
+        <td class="target-val">30%</td>
+      </tr>
+      <tr>
+        <td><strong>Citation Rate</strong><br><span style="font-size:12px;color:var(--muted)">% of test prompts where site is cited</span></td>
+        <td>Manual prompts (15–20 queries, 4 platforms)</td>
+        <td>Establish Week 1</td>
+        <td class="target-val">10%</td>
+        <td class="target-val">25%</td>
+      </tr>
+      <tr>
+        <td><strong>Branded Search Volume</strong></td>
+        <td>Google Search Console</td>
+        <td>Current baseline</td>
+        <td class="target-val">+10%</td>
+        <td class="target-val">+20%</td>
+      </tr>
+      <tr>
+        <td><strong>AI Referral Traffic</strong></td>
+        <td>GA4 custom segment (openai.com, perplexity.ai, gemini.google.com)</td>
+        <td>Current baseline</td>
+        <td class="target-val">+20%</td>
+        <td class="target-val">+50%</td>
+      </tr>
+      <tr>
+        <td><strong>Schema Coverage</strong></td>
+        <td>Google Rich Results Test</td>
+        <td>Current %</td>
+        <td class="target-val">80%</td>
+        <td class="target-val">100%</td>
+      </tr>
+      <tr>
+        <td><strong>Content Freshness</strong><br><span style="font-size:12px;color:var(--muted)">Avg. days since last update (pillar pages)</span></td>
+        <td>Content audit spreadsheet</td>
+        <td>Current</td>
+        <td class="target-val">&lt;30 days</td>
+        <td class="target-val">&lt;14 days</td>
+      </tr>
+      <tr>
+        <td><strong>Pages Optimised for LLMO</strong></td>
+        <td>Internal tracker</td>
+        <td>0</td>
+        <td class="target-val">15 pages</td>
+        <td class="target-val">25–30 pages</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:20px;padding:16px 20px;background:white;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;">
+    <p style="font-size:13px;color:var(--slate);line-height:1.6;"><strong>Manual Testing Protocol (every 2 weeks):</strong> Test the same 10-query set across ChatGPT, Perplexity, Claude, and Gemini. Record: cited (Y/N) · position in answer (1st/2nd/3rd source) · accuracy of representation · sentiment. This is your primary leading indicator and costs nothing.</p>
+  </div>
+</section>
+
+<!-- ── PLATFORM NOTES ── -->
+<section>
+  <h2><span class="num">07</span> Platform-Specific Tactics</h2>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="platform-head">Perplexity</div>
+      <div class="platform-body">Fastest return with real-time web retrieval. Changes can appear in citations within days of publishing. Target first. Prioritise freshness signals and structured data.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-head">ChatGPT</div>
+      <div class="platform-body">Bing-indexed. Favours encyclopaedic, authoritative sources. Build Wikipedia-style comprehensive guides with citations. Expect 2–4 week lag after changes.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-head">Google AI Overviews</div>
+      <div class="platform-body">Tied to traditional SEO + structured data. Maintaining Google rankings is prerequisite. Implement all schema types. Fastest to adopt FAQ schema.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-head">Gemini</div>
+      <div class="platform-body">Closely tied to Google Search ranking. Strong E-E-A-T signals matter most. Author credentials and expert citations are critical differentiators.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUICK WINS CHECKLIST ── -->
+<section>
+  <h2><span class="num">08</span> Quick Wins Immediate Action</h2>
+  <p style="margin-bottom:16px;font-size:14px;color:var(--muted);">Highest impact-to-effort ratio. Executable immediately without new content creation.</p>
+  <ul class="checklist" id="quicklist">
+    <li><input type="checkbox" id="c1" onchange="markDone(this)"><label for="c1">Check robots.txt to allow GPTBot, PerplexityBot, OAI-SearchBot</label></li>
+    <li><input type="checkbox" id="c2" onchange="markDone(this)"><label for="c2">Add "What is Multipolitan" answer block (40–60 words) to homepage and top 10 pages</label></li>
+    <li><input type="checkbox" id="c3" onchange="markDone(this)"><label for="c3">Add FAQ section with 5 Q&amp;A pairs to top 10 pages</label></li>
+    <li><input type="checkbox" id="c4" onchange="markDone(this)"><label for="c4">Create 3 comparison pages (vs Golden Visa / vs CBI / Digital Nomad alternatives)</label></li>
+    <li><input type="checkbox" id="c5" onchange="markDone(this)"><label for="c5">Add llms.txt to root directory</label></li>
+    <li><input type="checkbox" id="c6" onchange="markDone(this)"><label for="c6">Implement Organization schema on homepage, about, and contact pages. Add Article schema on resource posts.</label></li>
+    <li><input type="checkbox" id="c7" onchange="markDone(this)"><label for="c7">Add "Last Updated" timestamps to all pillar pages</label></li>
+    <li><input type="checkbox" id="c8" onchange="markDone(this)"><label for="c8">Run baseline prompt test: 15 queries across ChatGPT, Perplexity, Gemini, Claude and record all results</label></li>
+    <li><input type="checkbox" id="c9" onchange="markDone(this)"><label for="c9">Set up GA4 custom segment for AI referral traffic</label></li>
+    <li><input type="checkbox" id="c10" onchange="markDone(this)"><label for="c10">Rewrite first 2 sentences of every key page to answer: what it is, who it's for, why it matters</label></li>
+  </ul>
+</section>
+
+<!-- ── TOOL STACK ── -->
+<!--<section>
+  <h2><span class="num">09</span> Recommended Tool Stack</h2>
+  <table class="tracking-table">
+    <thead>
+      <tr><th>Purpose</th><th>Tool(s)</th><th>Cost</th><th>Priority</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LLM Visibility Tracking</td>
+        <td>Profound · Otterly.AI · Peec AI</td>
+        <td>$99–$399/mo</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr>
+        <td>Manual Citation Testing</td>
+        <td>ChatGPT · Perplexity · Gemini · Claude (free tier)</td>
+        <td>Free</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+      </tr>
+      <tr>
+        <td>Schema Validation</td>
+        <td>Google Rich Results Test · Schema Pro</td>
+        <td>Free / $79 one-time</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+      </tr>
+      <tr>
+        <td>Technical Crawl</td>
+        <td>Screaming Frog</td>
+        <td>Free / £209/yr</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr>
+        <td>Analytics</td>
+        <td>GA4 (custom dimensions) · Google Search Console</td>
+        <td>Free</td>
+        <td><span class="badge badge-critical">Critical</span></td>
+      </tr>
+      <tr>
+        <td>Content Optimisation</td>
+        <td>Surfer SEO · Clearscope</td>
+        <td>$100–$300/mo</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+      </tr>
+      <tr>
+        <td>Readability Check</td>
+        <td>Hemingway App (target Grade 9 or lower)</td>
+        <td>Free</td>
+        <td><span class="badge badge-medium">Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>-->
+
+</main>
+
+<footer>
+  <span>LLM Visibility Strategy for Multipolitan.com· 60 Days Roadmap · Prepared by Imran Hashim</span>
+</footer>
+
+<script>
+  function toggle(el) {
+    const card = el.closest('.week-card');
+    card.classList.toggle('open');
+  }
+  function markDone(checkbox) {
+    const li = checkbox.closest('li');
+    if (checkbox.checked) li.classList.add('done');
+    else li.classList.remove('done');
+  }
+</script>
+
+
+</body></html>
